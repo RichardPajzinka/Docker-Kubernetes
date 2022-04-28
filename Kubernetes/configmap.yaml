@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-vnutornadb
+data:
+  initdb.sql: |
+    CREATE TABLE Pouzivateldb.Pouzivatel (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(25) NOT NULL,
+    hobbies VARCHAR(25) NOT NULL,
+    location VARCHAR(25));

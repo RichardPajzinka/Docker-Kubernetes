@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: api-pod
+  template:
+    metadata:
+      labels:
+        app: api-pod
+    spec:
+      containers:
+      - name: api-container
+        image: sanomar/testapi_api
+        env:
+          - name: DBHOST
+            value: mysql-service
+          - name: MYSQL_USER
+            value: novyuzivatel
+          - name: MYSQL_PASSWORD
+            value: heslo
+          - name: MYSQL_DATABASE
+            value: Pouzivateldb
+        ports:
+        - containerPort: 80

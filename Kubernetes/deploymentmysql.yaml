@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deplyment-mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type : Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0.22
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: root
+          - name: MYSQL_USER
+            value: novyuzivatel
+          - name: MYSQL_PASSWORD
+            value: heslo
+          - name: MYSQL_DATABASE
+            value: Pouzivateldb
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+          - name: mysql-persistentvolume
+            mountPath: /var/lib/mysql
+          - name: mysql-vnutornadb
+            mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: mysql-persistentvolume
+        persistentVolumeClaim:
+          claimName: mysql-volume-claim
+      - name: mysql-vnutornadb
+        configMap:
+          name: mysql-vnutornadb
