@@ -1,0 +1,47 @@
+Linux / Ubuntu - docker CLI
+---------------------------
+docker run hello-world
+docker run busybox ls 
+		vystup - 
+			user@DESKTOP-F5J917O:~$ docker run busybox ls
+			bin
+			dev
+			etc
+			home
+			lib
+			lib64
+			proc
+			root
+			sys
+			tmp
+			usr
+			var
+docker ps - bežiaci container
+docker ps --all
+docker logs aefd2c650a79
+docker exec -it <container ID> sh - otvorenie shellu
+----------------------------
+miesto docker run možeme použit vytvorenie a spustenie 
+
+user@DESKTOP-F5J917O:~$ docker create hello-world 
+e8409ce15f415540b05d22b6959528dbe47e65b964158d923d3fee6c6dd84f6e 
+user@DESKTOP-F5J917O:~$ docker start -a e8409ce15f415540b05d22b6959528dbe47e65b964158d923d3fee6c6dd84f6e 
+-----------------------------
+ked chceme efektivne vyčistit všetky containere a všekto s nimi aj v cache pamati 
+
+user@DESKTOP-F5J917O:~$ docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - unused build cache
+
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+e8409ce15f415540b05d22b6959528dbe47e65b964158d923d3fee6c6dd84f6e
+9be8b2dcab80c265d352a75f93699e121a1eadb015a4e4214c6b48df4b217501
+f8a5469349fb28c9a1250a1841eac9176e92ab316e6b6ac07e971fab586ff3c4
+73d23fa196ca871711acac609c4256a1dc41ee19221c20ed29c442e1c6710da6
+5a653b3cf5ed84e0bda73c0483e65ecbde073bc7a20a8b4eaf6a659e9efbd1e8
+
+Total reclaimed space: 20.48kB
