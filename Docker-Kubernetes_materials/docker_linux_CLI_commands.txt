@@ -45,3 +45,28 @@ f8a5469349fb28c9a1250a1841eac9176e92ab316e6b6ac07e971fab586ff3c4
 5a653b3cf5ed84e0bda73c0483e65ecbde073bc7a20a8b4eaf6a659e9efbd1e8
 
 Total reclaimed space: 20.48kB
+-----------------------------
+DOCKERFILE
+1. FROM alpine
+
+    Tento príkaz definuje základný obraz (base image), z ktorého sa vytvorí nový obraz.
+    Alpine je veľmi malý, minimalistický Linuxový obraz, ktorý je často používaný pre jeho nízku veľkosť a jednoduchý dizajn.
+    Tento príkaz teda hovorí Dockeru, aby začal s obrazom Alpine Linux.
+
+2. RUN apk add --update redis
+
+    RUN: Tento príkaz vykoná príkaz na úpravu obrazu počas jeho vytvárania.
+    apk: Je to správca balíčkov pre Alpine Linux. Je ekvivalentom príkazov ako apt-get v Debian/Ubuntu alebo yum v RedHat/CentOS.
+    add: Tento príkaz pridáva balíčky do obrazu. V tomto prípade je pridaný balíček redis.
+    --update: Tento parameter zaručuje, že balíky budú nainštalované s najnovšími dostupnými verziami a že indexy balíkov budú aktualizované pred inštaláciou.
+    redis: Toto je názov balíka, ktorý sa inštaluje — v tomto prípade je to Redis, ktorý je open-source systém pre ukladanie dát v kľúč-hodnota formáte.
+
+3. CMD ["redis-server"]
+
+    CMD: Tento príkaz určuje, aký príkaz sa má vykonať pri spustení kontajnera. Je to predvolený príkaz, ktorý sa vykoná, ak nešpecifikuješ iný príkaz pri spustení kontajnera.
+    ["redis-server"]: Tento príkaz spustí Redis server pri štarte kontajnera. Redis bude bežať ako predvolený proces v tomto kontajneri.
+	
+ak toto mame vytvornee nesmieme zabudnut na
+"docker build ." v cmd pre buildovanie imaginu
+potom dame docker run s ID ktore nam to predelilo v mojom pripade to vyzera 
+"docker run b3e42e4d710efd4a26fbc61cc2bc6fdf8cf2a12ab98357798f006b16df09f473"
