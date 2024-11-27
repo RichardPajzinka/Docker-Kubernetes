@@ -20,6 +20,8 @@ docker ps - bežiaci container
 docker ps --all
 docker logs aefd2c650a79
 docker exec -it <container ID> sh - otvorenie shellu
+docker build -t frostipus/redis:latest . -> pri builde všetko za -t (tag) si dame akokeby naš tag pre dany imagine ktory ideme vytvarat 
+
 ----------------------------
 miesto docker run možeme použit vytvorenie a spustenie 
 
