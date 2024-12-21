@@ -72,3 +72,4 @@ ak toto mame vytvornee nesmieme zabudnut na
 "docker build ." v cmd pre buildovanie imaginu
 potom dame docker run s ID ktore nam to predelilo v mojom pripade to vyzera 
 "docker run b3e42e4d710efd4a26fbc61cc2bc6fdf8cf2a12ab98357798f006b16df09f473"
+v containery vieme otvorit aj shell - sudo docker run -it e0f71ef42d2f sh
