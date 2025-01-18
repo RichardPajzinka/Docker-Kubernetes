@@ -79,3 +79,9 @@ docker-compose up --build
 docker-compose up -d --spustenie na pozadi
 docker-compsoe down 
 docker-compose ps
+-----------------------------
+vlastny vytovrney docker file 
+docker build -f Dockerfile.dev .
+
+priakz pre vytvorenie volume
+docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_ID>
